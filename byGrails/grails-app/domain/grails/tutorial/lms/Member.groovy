@@ -5,20 +5,23 @@ class Member {
     Integer id
     String firstName
     String lastName
-    String userName
     String gender
     String email
-
-    String phoneNo
+    String mobile
     String address
-    String intake
-    String department
+    Date dateCreated
+    Date lastUpdated
 
     static constraints = {
-        email nullable: true
-        lastName nullable: true
-        firstName nullable: true
-        address nullable: true
+        firstName()
+        lastName(nullable: true)
+        gender()
+        email()
+        mobile(nullable: true)
+        address(nullable: true)
+    }
 
+    static mapping = {
+        address(type: 'text')
     }
 }

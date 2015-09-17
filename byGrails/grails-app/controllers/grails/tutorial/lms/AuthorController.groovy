@@ -1,12 +1,14 @@
-<%=packageName ? "package ${packageName}\n\n" : ''%>
+package grails.tutorial.lms
 
-class ${className}Controller {
+
+
+class AuthorController {
 
     GlobalConfigService globalConfigService
 
     def index() {
         params.max = params.max?:globalConfigService.itemsPerPage();
-        def list = ${className}.createCriteria().list(params) {
+        def list = Author.createCriteria().list(params) {
             if (params?.colName && params?.colValue){
                 like(params.colName, "%" +  params.colValue + "%")
             }
@@ -14,13 +16,13 @@ class ${className}Controller {
                 order("id","desc")
             }
         };
-        [${propertyName}List:list,${propertyName}Count: ${className}.count(),params:params]
+        [authorInstanceList:list,authorInstanceCount: Author.count(),params:params]
     }
 
 
     def show(Integer id) {
         if (id) {
-            [${propertyName}: ${className}.get(id)]
+            [authorInstance: Author.get(id)]
         } else {
             flash.message = [info: "Invalid Request", success: false]
             redirect(action: "index")
@@ -30,15 +32,15 @@ class ${className}Controller {
 
 
     def create() {
-        [${propertyName}Instance: chainModel?.${propertyName}]
+        [authorInstanceInstance: chainModel?.authorInstance]
     }
 
 
     def save() {
-        ${className} ${propertyName} = new ${className}(params)
-        ${propertyName}.save(flush:true)
-        if (${propertyName}.hasErrors()){
-            ${propertyName}.errors.each {
+        Author authorInstance = new Author(params)
+        authorInstance.save(flush:true)
+        if (authorInstance.hasErrors()){
+            authorInstance.errors.each {
                 println(it)
             }
             flash.message = [info:"Failed",success:false]
@@ -51,7 +53,7 @@ class ${className}Controller {
 
     def edit(Integer id) {
         if (id){
-            [${propertyName}: ${className}.get(id)]
+            [authorInstance: Author.get(id)]
         }else{
             flash.message = [info:"Invalid Request",success:false]
             redirect(action:"index")
@@ -59,23 +61,23 @@ class ${className}Controller {
     }
 
     def update() {
-        ${className} ${propertyName} = ${className}.get(params.id)
-        if (${propertyName} == null) {
+        Author authorInstance = Author.get(params.id)
+        if (authorInstance == null) {
             flash.message = [info:"Update Failed",success:false]
             redirect(action:"edit",params:params)
             return;
         }
 
-        ${propertyName}.properties = params
+        authorInstance.properties = params
 
-        if (${propertyName}.hasErrors()) {
+        if (authorInstance.hasErrors()) {
             flash.message = [info:"Update Failed",success:false]
             redirect(action:"edit",params:params)
             return;
         }
-        ${propertyName}.save(flush:true)
-        if (${propertyName}.hasErrors()){
-            ${propertyName}.errors.each {
+        authorInstance.save(flush:true)
+        if (authorInstance.hasErrors()){
+            authorInstance.errors.each {
                 println(it)
             }
             flash.message = [info:"Update Failed",success:false]
@@ -88,9 +90,9 @@ class ${className}Controller {
 
 
     def delete(Integer id) {
-        def ${propertyName} = ${className}.get(id);
-        if (${propertyName} != null) {
-            ${propertyName}.delete(flush: true)
+        def authorInstance = Author.get(id);
+        if (authorInstance != null) {
+            authorInstance.delete(flush: true)
             flash.message = [info: "Deleted", success: true]
         } else {
             flash.message = [info: "Record Not Found", success: false]
