@@ -32,9 +32,8 @@
 <div class="form-group">
 	<label for="price">
 		<g:message code="price" default="Price" />
-		
 	</label>
-	<g:field name="price" value="${fieldValue(bean: bookInstance, field: 'price')}"/>
+	<g:field name="price" type="number" class="form-control" value="${bookInstance?.price}"/>
 
 </div>
 
@@ -61,7 +60,7 @@
 		<g:message code="author" default="Author" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="author" name="author.id" class="form-control" from="${grails.tutorial.lms.Author.list()}" optionKey="id" required="" value="${bookInstance?.author?.id}" "/>
+	<g:select id="author" name="author.id" class="form-control apply-chosen" from="${grails.tutorial.lms.Author.list()}" optionKey="id" optionValue="name" required="" value="${bookInstance?.author?.id}"/>
 
 </div>
 
@@ -70,7 +69,7 @@
 		<g:message code="category" default="Category" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="category" name="category.id" class="form-control" from="${grails.tutorial.lms.Category.list()}" optionKey="id" required="" value="${bookInstance?.category?.id}" "/>
+	<g:select id="category" name="category.id" class="form-control apply-chosen" from="${grails.tutorial.lms.Category.list()}" optionKey="id" optionValue="name" required="" value="${bookInstance?.category?.id}"/>
 
 </div>
 
@@ -88,7 +87,7 @@
 		<g:message code="publisher" default="Publisher" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="publisher" name="publisher.id" class="form-control" from="${grails.tutorial.lms.Publisher.list()}" optionKey="id" required="" value="${bookInstance?.publisher?.id}" "/>
+	<g:select id="publisher" name="publisher.id" class="form-control apply-chosen" from="${grails.tutorial.lms.Publisher.list()}" optionKey="id" optionValue="name" required="" value="${bookInstance?.publisher?.id}"/>
 
 </div>
 
