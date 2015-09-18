@@ -12,6 +12,7 @@ class AuthenticationController {
 
     def doLogin() {
         session["user"] = "Admin"
+        redirect(controller: "dashboard");
     }
 
 }

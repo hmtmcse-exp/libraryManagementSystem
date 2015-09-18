@@ -37,6 +37,7 @@ class AuthorController {
 
 
     def save() {
+        params.dob = params.date("dob","dd-mm-yyyy")
         Author authorInstance = new Author(params)
         authorInstance.save(flush:true)
         if (authorInstance.hasErrors()){
@@ -61,15 +62,14 @@ class AuthorController {
     }
 
     def update() {
+        params.dob = params.date("dob","dd-mm-yyyy")
         Author authorInstance = Author.get(params.id)
         if (authorInstance == null) {
             flash.message = [info:"Update Failed",success:false]
             redirect(action:"edit",params:params)
             return;
         }
-
         authorInstance.properties = params
-
         if (authorInstance.hasErrors()) {
             flash.message = [info:"Update Failed",success:false]
             redirect(action:"edit",params:params)

@@ -4,18 +4,11 @@ package grails.tutorial.lms
 class BookController {
 
     GlobalConfigService globalConfigService
+    BookService bookService
 
     def index() {
-        params.max = params.max ?: globalConfigService.itemsPerPage();
-        def list = Book.createCriteria().list(params) {
-            if (params?.colName && params?.colValue) {
-                like(params.colName, "%" + params.colValue + "%")
-            }
-            if (!params.sort) {
-                order("id", "desc")
-            }
-        };
-        [bookInstanceList: list, bookInstanceCount: Book.count(), params: params]
+       def bookList = bookService.bookList(params)
+        [bookInstanceList: bookList.bookInstanceList, bookInstanceCount: bookList.bookInstanceCount, params: params]
     }
 
 

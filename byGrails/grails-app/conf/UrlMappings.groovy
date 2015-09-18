@@ -7,7 +7,8 @@ class UrlMappings {
             }
         }
 
-        "/"(controller:"dashboard")
+        "/manage"(controller:"dashboard")
+        "/"(controller:"front")
         "500"(view:'/error')
 	}
 }

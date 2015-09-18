@@ -8,7 +8,7 @@
                     <div class="account-wall">
 
                         <asset:image src="logo.png" class="profile-img"/>
-                        <g:form controller="authentication" action="index" class="form-signin">
+                        <g:form controller="authentication" action="doLogin" class="form-signin">
                         <input type="text" name="email" class="form-control" placeholder="Email" required autofocus>
                         <input type="password" name="password" class="form-control" placeholder="Password" required>
                         <button class="btn btn-lg btn-primary btn-block" name="doLogin" type="submit">Login</button>

@@ -13,7 +13,7 @@ class Author {
 
     static constraints = {
         name()
-        dob(nullable: true)
+        dob(nullable: true, format: 'dd-mm-yyyy')
         bio(nullable: true)
     }
 
