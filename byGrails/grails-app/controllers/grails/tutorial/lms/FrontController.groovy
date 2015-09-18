@@ -8,4 +8,8 @@ class FrontController {
         def bookList = bookService.bookList(params)
         [bookInstanceList: bookList.bookInstanceList, bookInstanceCount: bookList.bookInstanceCount, params: params]
     }
+
+    def registration(){
+
+    }
 }
