@@ -47,33 +47,6 @@
 </div>
 
 <div class="form-group">
-	<label for="description">
-		<g:message code="description" default="Description" />
-		
-	</label>
-	<g:textField class="form-control" name="description" value="${bookInstance?.description}"/>
-
-</div>
-
-<div class="form-group">
-	<label for="author">
-		<g:message code="author" default="Author" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="author" name="author.id" class="form-control apply-chosen" from="${grails.tutorial.lms.Author.list()}" optionKey="id" optionValue="name" required="" value="${bookInstance?.author?.id}"/>
-
-</div>
-
-<div class="form-group">
-	<label for="category">
-		<g:message code="category" default="Category" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="category" name="category.id" class="form-control apply-chosen" from="${grails.tutorial.lms.Category.list()}" optionKey="id" optionValue="name" required="" value="${bookInstance?.category?.id}"/>
-
-</div>
-
-<div class="form-group">
 	<label for="code">
 		<g:message code="code" default="Code" />
 		<span class="required-indicator">*</span>
@@ -82,6 +55,24 @@
 
 </div>
 
+
+<div class="form-group">
+	<label for="author">
+		<g:message code="author" default="Author" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="author" name="author.id" multiple="multiple" class="form-control apply-chosen" from="${grails.tutorial.lms.Author.list()}" optionKey="id" optionValue="name" required="" value="${bookInstance?.author?.id}"/>
+</div>
+
+<div class="form-group">
+	<label for="category">
+		<g:message code="category" default="Category" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="category" name="category.id" class="form-control apply-chosen" from="${grails.tutorial.lms.Category.list()}" optionKey="id" optionValue="name" required="" value="${bookInstance?.category?.id}"/>
+</div>
+
+
 <div class="form-group">
 	<label for="publisher">
 		<g:message code="publisher" default="Publisher" />
@@ -89,5 +80,12 @@
 	</label>
 	<g:select id="publisher" name="publisher.id" class="form-control apply-chosen" from="${grails.tutorial.lms.Publisher.list()}" optionKey="id" optionValue="name" required="" value="${bookInstance?.publisher?.id}"/>
 
+</div>
+
+<div class="form-group">
+	<label for="description">
+		<g:message code="description" default="Description" />
+	</label>
+	<g:textField class="form-control" name="description" value="${bookInstance?.description}"/>
 </div>
 
