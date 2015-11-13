@@ -20,6 +20,7 @@ class Book {
         isbn(nullable: true)
         copy()
         price(nullable: true)
+        author(nullable: true)
         edition()
         description(nullable: true)
     }

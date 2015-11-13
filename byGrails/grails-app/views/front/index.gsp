@@ -16,7 +16,7 @@
                     <g:sortableColumn property="copy" title="${message(code: 'copy', default: 'Copy')}" />
                     <g:sortableColumn property="price" title="${message(code: 'price', default: 'Price')}" />
                     <g:sortableColumn property="edition" title="${message(code: 'edition', default: 'Edition')}" />
-                    <g:sortableColumn property="description" title="${message(code: 'description', default: 'Description')}" />
+                    <th class="action-row-front">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,7 +27,13 @@
                         <td>${bookInstance?.copy}</td>
                         <td>${bookInstance?.price}</td>
                         <td>${bookInstance?.edition}</td>
-                        <td>${bookInstance?.description}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <a href="/byGrails/author/create" class="btn  btn-success">Details</a>
+                                <a href="/byGrails/author/index" class="btn  btn-info">Borrow Reques</a>
+                            </div>
+                        </td>
+
                     </tr>
                 </g:each>
                 </tbody>

@@ -484,3 +484,7 @@ body {
     float: right;
     margin-left: 5px;
 }
+
+.action-row-front{
+    width: 215px;
+}
