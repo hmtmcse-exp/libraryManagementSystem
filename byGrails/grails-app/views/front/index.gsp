@@ -1,4 +1,3 @@
-
 <%@ page import="grails.tutorial.lms.Book" %>
 <meta name="layout" content="front">
 <title><g:message code="bookInstance" default="Book"/> List</title>
@@ -30,7 +29,7 @@
                         <td>
                             <div class="btn-group" role="group" aria-label="First group">
                                 <a href="/byGrails/author/create" class="btn  btn-success">Details</a>
-                                <a href="/byGrails/author/index" class="btn  btn-info">Borrow Reques</a>
+                                <a href="/byGrails/author/index" class="btn  btn-info">Borrow Request</a>
                             </div>
                         </td>
 

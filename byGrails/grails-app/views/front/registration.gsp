@@ -6,12 +6,19 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
-<head>
-    <title></title>
-</head>
-
-<body>
-
-</body>
-</html>
+<title>...:: Member Registration ::...</title>
+<meta name="layout" content="front">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Member Registration</h3>
+    </div>
+    <div class="panel-body">
+        <g:form action="save"  controller="Member">
+            <g:render template="../member/form"/>
+            <div class="form-action pull-right">
+                <g:submitButton name="create" class="btn btn-primary" value="${message(code: 'create', default: 'Create')}" />
+                <g:link action="index" controller="Member" class="btn  btn-danger">Cancel</g:link>
+            </div>
+        </g:form>
+    </div>
+</div>

@@ -22,6 +22,7 @@ class FrontController {
     }
 
     def bookByCategory(){
-
+        def bookList = bookService.bookByCategory(params)
+        render(view:"index",model:[bookInstanceList: bookList.bookInstanceList, bookInstanceCount: bookList.bookInstanceCount, params: params])
     }
 }

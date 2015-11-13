@@ -30,13 +30,12 @@ class BookController {
 
     def save() {
 
-
         Book bookInstance = new Book(params)
         if (params.author.id){
-           def author = Author.createCriteria().list {
-               'in'('id',[1,2])
-            }
-            bookInstance.addToAuthor(author);
+//           def author = Author.createCriteria().list {
+//               'in'('id',[1,2])
+//            }
+//            bookInstance.addToAuthor(author);
         }
         bookInstance.save(flush: true)
         if (bookInstance.hasErrors()) {

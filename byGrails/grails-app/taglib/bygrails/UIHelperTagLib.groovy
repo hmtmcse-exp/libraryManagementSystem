@@ -9,7 +9,7 @@ class UIHelperTagLib {
         def category = Category.list();
         out << g.link(controller:"front", action:"index", class:"list-group-item"){g.message(code:"home", default:"Category")}
         category.each {cat ->
-            out << g.link(controller:"front", action:"index", class:"list-group-item"){"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ cat.name}
+            out << g.link(controller:"front", action:"bookByCategory", params:['cat':cat.id],  class:"list-group-item"){"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ cat.name}
         }
     }
 
