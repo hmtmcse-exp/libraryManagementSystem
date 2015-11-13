@@ -11,6 +11,8 @@ class Member {
     String address
     Date dateCreated
     Date lastUpdated
+    Boolean isApprove = false
+    String roll
 
     static constraints = {
         firstName()
@@ -19,6 +21,8 @@ class Member {
         email()
         mobile(nullable: true)
         address(nullable: true)
+        roll()
+        isApprove()
     }
 
     static mapping = {

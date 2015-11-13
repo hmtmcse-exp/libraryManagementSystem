@@ -1,6 +1,15 @@
 <%@ page import="grails.tutorial.lms.Member" %>
 
 
+<div class="form-group">
+	<label for="address">
+		<g:message code="address" default="ID" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField class="form-control" required="" name="roll" value="${memberInstance?.roll}"/>
+</div>
+
+
 
 <div class="form-group">
 	<label for="firstName">

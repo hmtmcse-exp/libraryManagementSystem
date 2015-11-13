@@ -12,4 +12,16 @@ class FrontController {
     def registration(){
 
     }
+
+    def borrowRequest(){
+
+    }
+
+    def borrowBookDetails(){
+
+    }
+
+    def bookByCategory(){
+
+    }
 }
