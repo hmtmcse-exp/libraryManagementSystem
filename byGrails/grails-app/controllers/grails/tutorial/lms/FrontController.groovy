@@ -34,6 +34,15 @@ class FrontController {
     def borrowRequest(){
         def isExist = session["member"]?:null
         if (isExist != null){
+            params.memberID = isExist.id
+            def result = memberService.addToBorrowList(params);
+            if (result.success == true){
+                flash.message = [info: "Book Added Successfully", success: true]
+                redirect(controller: "front", action: "books")
+            }else{
+                flash.message = [info: result.message, success: false]
+                redirect(controller: "front", action: "index")
+            }
 
         }else{
             flash.message = [info: "You have need to login or Register for send borrow request", success: true]
@@ -71,7 +80,13 @@ class FrontController {
     def books(){
         def isExist = session["member"]?:null
         if (isExist != null){
-
+            def list = memberService.getBorrowListByMemberId(isExist.id)
+            if (list.success == true){
+                [bookInstanceList: list.bookList]
+            }else{
+                flash.message = [info: list.message, success: false]
+                redirect(controller: "front", action: "index")
+            }
         }else{
             flash.message = [info: "You have need to login or Register for send borrow request", success: true]
             redirect(controller: "front", action: "index")

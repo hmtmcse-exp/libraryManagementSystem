@@ -77,7 +77,7 @@ class MemberService {
                     map.message = "Can't Add to Borrow List"
                     return map
                 }else{
-                    mep.success = true
+                    map.success = true
                     return map
                 }
             }else{
@@ -90,11 +90,11 @@ class MemberService {
         }
     }
 
-    def getBorrowListByMemberId(def params){
+    def getBorrowListByMemberId(String memberID){
         def map = [:]
         map.success = false
-        if (params != null && params.memberID){
-            Member member = Member.get(params.memberID)
+        if (memberID != null && !memberID.equals("")){
+            Member member = Member.get(memberID)
             def bookList = BorrowBook.findByMember(member);
             map.success = true
             map.bookList = bookList.book

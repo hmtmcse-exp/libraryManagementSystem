@@ -4,10 +4,35 @@
 <div class="row">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            Borrow Book List
+            Book List
         </div>
         <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr class="text-center">
+                    <g:sortableColumn property="name" title="${message(code: 'name', default: 'Name')}" />
+                    <g:sortableColumn property="isbn" title="${message(code: 'isbn', default: 'Isbn')}" />
+                    <g:sortableColumn property="edition" title="${message(code: 'edition', default: 'Edition')}" />
+                    <th class="action-row-front">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each in="${bookInstanceList}" status="i" var="bookInstance">
+                    <tr class="text-center">
+                        <td>${bookInstance?.name}</td>
+                        <td>${bookInstance?.isbn}</td>
+                        <td>${bookInstance?.edition}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <a href="/byGrails/author/create" class="btn  btn-success">Details</a>
+                                <g:link controller="front" action="borrowRequest" class="btn  btn-info" params="${[bookID:bookInstance.id]}">Borrow Request</g:link>
+                            </div>
+                        </td>
 
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
