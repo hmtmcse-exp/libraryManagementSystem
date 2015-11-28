@@ -1,6 +1,6 @@
 package grails.tutorial.lms
 
-class BorrowBooks {
+class BorrowBook {
 
     Integer id
     Book book
