@@ -47,7 +47,7 @@ class MemberService {
     }
 
     def loginMe(def params){
-        def isExist = Member.findByRollAndPassword(params.roll,params.passsword);
+        def isExist = Member.findByRollAndPassword(params.roll,params.password);
         if (isExist != null && isExist.id){
             return isExist
         }else{

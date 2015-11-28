@@ -60,10 +60,21 @@ class FrontController {
         def member = memberService.loginMe(params);
         if (member != null){
             session["member"] = member
+            flash.message = [info: "Login Success", success: true]
+            redirect(controller: "front", action: "books")
         }else{
             flash.message = [info: "Invalid Credential", success: false]
             redirect(controller: "front", action: "memberLogin")
         }
+    }
 
+    def books(){
+        def isExist = session["member"]?:null
+        if (isExist != null){
+
+        }else{
+            flash.message = [info: "You have need to login or Register for send borrow request", success: true]
+            redirect(controller: "front", action: "index")
+        }
     }
 }
