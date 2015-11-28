@@ -3,12 +3,19 @@
 
 <div class="form-group">
 	<label for="address">
-		<g:message code="address" default="ID" />
+		<g:message code="address" default="University Identification" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField class="form-control" required="" name="roll" value="${memberInstance?.roll}"/>
 </div>
 
+<div class="form-group">
+	<label for="address">
+		<g:message code="password" default="Password" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField class="form-control" required="" name="password" value="${memberInstance?.password}"/>
+</div>
 
 
 <div class="form-group">
@@ -34,7 +41,7 @@
 		<g:message code="gender" default="Gender" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField class="form-control" name="gender" required="" value="${memberInstance?.gender}"/>
+	<g:select class="form-control" name="gender" from="${['Male', 'Female', 'Other']}" value="${memberInstance?.gender}" />
 
 </div>
 

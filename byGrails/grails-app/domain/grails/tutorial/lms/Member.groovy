@@ -9,6 +9,7 @@ class Member {
     String email
     String mobile
     String address
+    String password
     Date dateCreated
     Date lastUpdated
     Boolean isApprove = false
@@ -22,6 +23,7 @@ class Member {
         mobile(nullable: true)
         address(nullable: true)
         roll()
+        password()
         isApprove()
     }
 

@@ -4,6 +4,7 @@ package grails.tutorial.lms
 class MemberController {
 
     GlobalConfigService globalConfigService
+    MemberService memberService
 
     def index() {
         params.max = params.max ?: globalConfigService.itemsPerPage();
@@ -36,17 +37,12 @@ class MemberController {
 
 
     def save() {
-        Member memberInstance = new Member(params)
-        memberInstance.save(flush: true)
-        if (memberInstance.hasErrors()) {
-            memberInstance.errors.each {
-                println(it)
-            }
-            flash.message = [info: "Failed", success: false]
-            redirect(action: "create", params: params)
-        } else {
+        if (memberService.save(params)){
             flash.message = [info: "Created", success: true]
             redirect(action: "index")
+        }else{
+            flash.message = [info: "Failed", success: false]
+            redirect(action: "create", params: params)
         }
     }
 
@@ -60,30 +56,12 @@ class MemberController {
     }
 
     def update() {
-        Member memberInstance = Member.get(params.id)
-        if (memberInstance == null) {
-            flash.message = [info: "Update Failed", success: false]
-            redirect(action: "edit", params: params)
-            return;
-        }
-
-        memberInstance.properties = params
-
-        if (memberInstance.hasErrors()) {
-            flash.message = [info: "Update Failed", success: false]
-            redirect(action: "edit", params: params)
-            return;
-        }
-        memberInstance.save(flush: true)
-        if (memberInstance.hasErrors()) {
-            memberInstance.errors.each {
-                println(it)
-            }
-            flash.message = [info: "Update Failed", success: false]
-            redirect(action: "edit", params: params)
-        } else {
+        if (memberService.update(params)){
             flash.message = [info: "Updated", success: true]
             redirect(action: "index")
+        }else{
+            flash.message = [info: "Update Failed", success: false]
+            redirect(action: "edit", params: params)
         }
     }
 
