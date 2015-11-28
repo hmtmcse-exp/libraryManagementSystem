@@ -43,7 +43,7 @@ class FrontController {
 
     }
 
-    def borrowBookDetails(){
+    def bookDetails(){
 
     }
 

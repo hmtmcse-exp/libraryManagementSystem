@@ -19,6 +19,10 @@
     <asset:stylesheet src="app/style.css"/>
     <asset:stylesheet src="app/login.css"/>
 
+    <asset:stylesheet src="lib/bootstrap.min.css"/>
+    <asset:stylesheet src="lib/chosen.min.css"/>
+    <asset:stylesheet src="app/style.css"/>
+
     <asset:javascript src="lib/jquery-1.11.3.min.js"/>
     <asset:javascript src="lib/chosen.jquery.min.js"/>
     <asset:javascript src="lib/jquery-ui.min.js"/>
@@ -31,9 +35,9 @@
 
     <script type="text/javascript">
         GT.baseURL = "${session.getServletContext().getContextPath()}/";
-        <g:if test="${flash?.message && flash?.message?.info && flash?.message?.success}">
+        <g:if test="${flash?.message && flash?.message?.info}">
         jQuery(document).ready(function () {
-            GT.messageBox.showMessage(Boolean("${flash.message?.success}"), "${flash.message?.info}");
+            GT.messageBox.showMessage(Boolean(${flash.message?.success}), "${flash.message?.info}");
         });
         </g:if>
     </script>

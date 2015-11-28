@@ -39,7 +39,7 @@ class MemberService {
 
     def isExistMember(String roll ){
         def isExist = Member.findByRoll(roll);
-        if (isExist.id){
+        if (isExist != null && isExist.id){
             return isExist
         }else{
             return  null
@@ -48,7 +48,7 @@ class MemberService {
 
     def loginMe(def params){
         def isExist = Member.findByRollAndPassword(params.roll,params.passsword);
-        if (isExist.id){
+        if (isExist != null && isExist.id){
             return isExist
         }else{
             return  null

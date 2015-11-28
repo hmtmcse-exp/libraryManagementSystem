@@ -7,15 +7,15 @@
                     <h1 class="text-center login-title">Login Here</h1>
                     <div class="account-wall">
                         <asset:image src="logo.png" class="profile-img"/>
-                        <g:form controller="authentication" action="doLogin" class="form-signin">
-                            <input type="text" name="email" class="form-control" placeholder="Email" required autofocus>
+                        <g:form controller="front" action="loginMe" class="form-signin">
+                            <input type="text" name="roll" class="form-control" placeholder="University Identification" required autofocus>
                             <input type="password" name="password" class="form-control" placeholder="Password" required>
                             <button class="btn btn-lg btn-primary btn-block" name="doLogin" type="submit">Login</button>
                         </g:form>
                     </div>
-                    <a href="/authentication/registration" class="text-center new-account">Registration</a>
+                    <g:link controller="front" action="registerMe" class="text-center new-account">Registration</g:link>
                 </div>
             </div>
         </div>
     </div>
-</div>>
+</div>
