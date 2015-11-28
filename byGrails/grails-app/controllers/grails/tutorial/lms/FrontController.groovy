@@ -17,20 +17,29 @@ class FrontController {
     def registerMe(){
         def isExist = memberService.isExistMember(params.roll);
         if (isExist != null){
+            session["member"] = isExist
             flash.message = [info: "Account Already Exist", success: true]
-            redirect(action: "index")
+            redirect(controller: "front",  action: "index")
         }else{
             if (memberService.save(params)){
                 flash.message = [info: "Registration Complete", success: true]
-                redirect(action: "index")
+                redirect(controller: "front", action: "index")
             }else{
                 flash.message = [info: "Registration Can't Complete", success: false]
-                redirect(action: "registration", params: params)
+                redirect(controller: "front", action: "registration", params: params)
             }
         }
     }
 
     def borrowRequest(){
+        def isExist = session["member"]?:null
+        if (isExist != null){
+
+        }else{
+            flash.message = [info: "You have need to login or Register for send borrow request", success: true]
+            redirect(controller: "front", action: "index")
+        }
+
 
     }
 
@@ -41,5 +50,20 @@ class FrontController {
     def bookByCategory(){
         def bookList = bookService.bookByCategory(params)
         render(view:"index",model:[bookInstanceList: bookList.bookInstanceList, bookInstanceCount: bookList.bookInstanceCount, params: params])
+    }
+
+    def memberLogin(){
+
+    }
+
+    def loginMe(){
+        def member = memberService.loginMe(params);
+        if (member != null){
+            session["member"] = member
+        }else{
+            flash.message = [info: "Invalid Credential", success: false]
+            redirect(controller: "front", action: "memberLogin")
+        }
+
     }
 }

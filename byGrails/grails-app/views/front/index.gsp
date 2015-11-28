@@ -29,7 +29,7 @@
                         <td>
                             <div class="btn-group" role="group" aria-label="First group">
                                 <a href="/byGrails/author/create" class="btn  btn-success">Details</a>
-                                <a href="/byGrails/author/index" class="btn  btn-info">Borrow Request</a>
+                                <g:link controller="front" action="borrowRequest" class="btn  btn-info" params="${[bookID:bookInstance.id]}">Borrow Request</g:link>
                             </div>
                         </td>
 
