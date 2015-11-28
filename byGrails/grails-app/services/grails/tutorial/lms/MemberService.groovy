@@ -1,7 +1,5 @@
 package grails.tutorial.lms
 
-import org.xhtmlrenderer.pdf.BookmarkElement
-
 
 class MemberService {
 
@@ -90,14 +88,18 @@ class MemberService {
         }
     }
 
-    def getBorrowListByMemberId(String memberID){
+    def getBorrowListByMemberId(Integer memberID){
         def map = [:]
         map.success = false
-        if (memberID != null && !memberID.equals("")){
+        if (memberID != null){
             Member member = Member.get(memberID)
             def bookList = BorrowBook.findByMember(member);
             map.success = true
-            map.bookList = bookList.book
+            if (bookList != null){
+                map.bookList = bookList.book
+            }else{
+                map.bookList = []
+            }
             return map
         }else{
             map.message = "Invalid Request"

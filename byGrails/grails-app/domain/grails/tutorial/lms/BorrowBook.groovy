@@ -8,6 +8,7 @@ class BorrowBook {
     Date borrowDate
     Date returnDate
     Boolean isReturn = false;
+    Boolean isPending = true;
 
     static constraints = {
         returnDate(nullable: true)
