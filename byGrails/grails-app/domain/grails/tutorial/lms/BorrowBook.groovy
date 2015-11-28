@@ -10,5 +10,6 @@ class BorrowBook {
     Boolean isReturn = false;
 
     static constraints = {
+        returnDate(nullable: true)
     }
 }

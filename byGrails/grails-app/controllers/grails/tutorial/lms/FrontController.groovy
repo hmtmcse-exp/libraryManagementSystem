@@ -37,7 +37,7 @@ class FrontController {
 
         }else{
             flash.message = [info: "You have need to login or Register for send borrow request", success: true]
-            redirect(controller: "front", action: "index")
+            redirect(controller: "front", action: "loginMe")
         }
 
 
