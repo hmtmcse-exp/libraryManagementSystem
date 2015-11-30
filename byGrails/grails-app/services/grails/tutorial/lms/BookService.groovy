@@ -28,4 +28,28 @@ class BookService {
         };
         return [bookInstanceList: list, bookInstanceCount: 0, params: params]
     }
+
+    def getPendingBorrowBook(){
+        def borrowBooks = BorrowBook.createCriteria().list {
+            eq("isPending",true)
+        }
+        return borrowBooks
+    }
+
+    def approveBorrowBookByID(Integer id = 0){
+        if (id != 0){
+            def borrowBook = BorrowBook.get(id)
+            borrowBook.isPending = false
+            borrowBook.save(flush: true)
+            if (borrowBook.hasErrors()){
+                return false
+            }else{
+                return true
+            }
+        }else{
+            return false
+        }
+    }
+
+
 }
