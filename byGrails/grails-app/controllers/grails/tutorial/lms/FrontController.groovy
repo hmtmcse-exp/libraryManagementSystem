@@ -66,8 +66,13 @@ class FrontController {
     def loginMe(){
         def member = memberService.loginMe(params);
         if (member != null){
-            session["member"] = member
-            flash.message = [info: "Login Success", success: true]
+            if (member.isApprove == false){
+                session["member"] = member
+                flash.message = [info: "Member Not Approved Yet, Please Contact with librarian", success: true]
+            }else{
+                session["member"] = member
+                flash.message = [info: "Login Success", success: true]
+            }
             redirect(controller: "front", action: "books")
         }else{
             flash.message = [info: "Invalid Credential", success: false]
@@ -100,5 +105,11 @@ class FrontController {
             redirect(controller: "front", action: "index")
             return;
         }
+    }
+
+    def logout() {
+        session.invalidate()
+        flash.message = [info: "Successfully Logout", success: false]
+        redirect(controller: "front", action: "index")
     }
 }
