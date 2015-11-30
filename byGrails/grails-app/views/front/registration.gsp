@@ -13,7 +13,7 @@
         <h3 class="panel-title">Member Registration</h3>
     </div>
     <div class="panel-body">
-        <g:form action="save"  controller="Member">
+        <g:form action="registerMe"  controller="front">
             <g:render template="../member/form"/>
             <div class="form-action pull-right">
                 <g:submitButton name="create" class="btn btn-primary" value="${message(code: 'create', default: 'Create')}" />

@@ -13,7 +13,7 @@
                             <button class="btn btn-lg btn-primary btn-block" name="doLogin" type="submit">Login</button>
                         </g:form>
                     </div>
-                    <g:link controller="front" action="registerMe" class="text-center new-account">Registration</g:link>
+                    <g:link controller="front" action="registration" class="text-center new-account">Registration</g:link>
                 </div>
             </div>
         </div>

@@ -17,9 +17,8 @@ class FrontController {
     def registerMe(){
         def isExist = memberService.isExistMember(params.roll);
         if (isExist != null){
-            session["member"] = isExist
-            flash.message = [info: "Account Already Exist", success: true]
-            redirect(controller: "front",  action: "index")
+            flash.message = [info: "Account Already Exist. Please Login.", success: true]
+            redirect(controller: "front",  action: "memberLogin")
         }else{
             if (memberService.save(params)){
                 flash.message = [info: "Registration Complete", success: true]
