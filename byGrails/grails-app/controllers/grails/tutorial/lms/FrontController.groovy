@@ -91,4 +91,15 @@ class FrontController {
             redirect(controller: "front", action: "index")
         }
     }
+
+
+    def show() {
+        if (params.bookID) {
+            [bookInstance: Book.get(params.bookID)]
+        } else {
+            flash.message = [info: "Invalid Request", success: false]
+            redirect(controller: "front", action: "index")
+            return;
+        }
+    }
 }

@@ -28,7 +28,7 @@
                         <td>${bookInstance?.edition}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="First group">
-                                <a href="/byGrails/author/create" class="btn  btn-success">Details</a>
+                                <g:link controller="front" action="show" class="btn  btn-success" params="${[bookID:bookInstance.id]}">Detailst</g:link>
                                 <g:link controller="front" action="borrowRequest" class="btn  btn-info" params="${[bookID:bookInstance.id]}">Borrow Request</g:link>
                             </div>
                         </td>
