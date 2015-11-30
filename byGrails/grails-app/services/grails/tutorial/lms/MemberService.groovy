@@ -108,12 +108,7 @@ class MemberService {
     }
 
 
-    def getPendingMember(){
-        def members = Member.createCriteria().list {
-            eq("isApprove",false)
-        }
-        return members
-    }
+
 
     def approveMemberByID(Integer id = 0){
         if (id != 0){

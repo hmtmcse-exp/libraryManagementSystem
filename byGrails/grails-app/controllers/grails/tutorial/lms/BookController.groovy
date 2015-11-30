@@ -99,4 +99,11 @@ class BookController {
         redirect(action: "index")
     }
 
+
+
+    def getPendingBorrowBook(){
+        def bookList = bookService.getPendingBorrowBook()
+        [bookInstanceList: bookList]
+    }
+
 }

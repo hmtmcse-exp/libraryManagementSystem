@@ -77,4 +77,8 @@ class MemberController {
         redirect(action: "index")
     }
 
+    def getPendingMember(){
+
+    }
+
 }
