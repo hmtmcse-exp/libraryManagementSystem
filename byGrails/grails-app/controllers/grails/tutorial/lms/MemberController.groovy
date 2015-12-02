@@ -77,8 +77,20 @@ class MemberController {
         redirect(action: "index")
     }
 
-    def getPendingMember(){
+    def pendingMemberList(){
+        [memberInstanceList:memberService.getPendingMemberList()]
+    }
 
+    def approve(){
+        Integer id = params.int("id")?:0
+        def isGiven = memberService.approveMemberByID(id)
+        if (isGiven){
+            flash.message = [info: "Approved", success: true]
+            redirect(controller: "member", action: "pendingMemberList")
+        }else {
+            flash.message = [info: "Can't Able to Approved", success: false]
+            redirect(controller: "member", action: "pendingMemberList")
+        }
     }
 
 }

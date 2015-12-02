@@ -126,4 +126,12 @@ class MemberService {
     }
 
 
+    def getPendingMemberList(){
+        def member = Member.createCriteria().list {
+            eq("isApprove",false)
+        }
+        return member;
+    }
+
+
 }

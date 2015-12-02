@@ -111,10 +111,10 @@ class BookController {
         def isGiven = bookService.approveBorrowBookByID(id)
         if (isGiven){
             flash.message = [info: "Given", success: true]
-            redirect(controller: "book", action: "index")
+            redirect(controller: "book", action: "getPendingBorrowBook")
         }else {
             flash.message = [info: "Can't Able to Given", success: false]
-            redirect(controller: "book", action: "index")
+            redirect(controller: "book", action: "getPendingBorrowBook")
         }
     }
 
