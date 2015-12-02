@@ -13,6 +13,7 @@
                     <g:sortableColumn property="name" title="${message(code: 'name', default: 'Name')}" />
                     <g:sortableColumn property="isbn" title="${message(code: 'isbn', default: 'Isbn')}" />
                     <g:sortableColumn property="edition" title="${message(code: 'edition', default: 'Edition')}" />
+                    <th>Status</th>
                     <th class="action-row-front">Action</th>
                 </tr>
                 </thead>
@@ -22,6 +23,14 @@
                         <td>${bookInstance?.name}</td>
                         <td>${bookInstance?.isbn}</td>
                         <td>${bookInstance?.edition}</td>
+                        <td>
+                            %{--<g:if test="${bookInstance.isPending == true}">--}%
+                                %{--<a href="#" class="btn  btn-danger">Pending</a>--}%
+                            %{--</g:if>--}%
+                            %{--<g:else>--}%
+                                %{--<a href="#" class="btn  btn-success">Approved</a>--}%
+                            %{--</g:else>--}%
+                        </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="First group">
                                 <g:link controller="front" action="show" class="btn  btn-success" params="${[bookID:bookInstance.id]}">Detailst</g:link>
