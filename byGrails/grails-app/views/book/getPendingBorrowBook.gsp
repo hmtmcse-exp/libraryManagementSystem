@@ -10,12 +10,10 @@
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <g:sortableColumn property="name" title="${message(code: 'name', default: 'Name')}" />
-                    <g:sortableColumn property="isbn" title="${message(code: 'isbn', default: 'Isbn')}" />
-                    <g:sortableColumn property="copy" title="${message(code: 'copy', default: 'Copy')}" />
-                    <g:sortableColumn property="price" title="${message(code: 'price', default: 'Price')}" />
-                    <g:sortableColumn property="edition" title="${message(code: 'edition', default: 'Edition')}" />
-                    <g:sortableColumn property="description" title="${message(code: 'description', default: 'Description')}" />
+                    <th>Name</th>
+                    <th>Isbn</th>
+                    <th>Copy</th>
+                    <th>Price</th>
                     <th class="action-row" >Action</th>
                 </tr>
                 </thead>
@@ -29,9 +27,7 @@
                         <td class="action-row">
                             <div class="btn-toolbar">
                                 <div class="btn-group  btn-group-justified">
-                                    <g:link controller="Book" class="btn btn-default" action="show" params="[id:bookInstance.id]"><i class="glyphicon glyphicon glyphicon glyphicon-eye-open"></i></g:link>
-                                    <g:link controller="Book" class="btn btn-default" action="edit" params="[id:bookInstance.id]"><i class="glyphicon glyphicon glyphicon-pencil"></i></g:link>
-                                    <a href="#" class="btn btn-default open-confirm-box" wizard-url="Book/delete/${bookInstance.id}" wizard-title="Delete"><i class="glyphicon glyphicon glyphicon-remove"></i></a>
+                                    <g:link controller="Book" class="btn btn-default" action="approveBorrowBookByID" params="[borrowID:bookInstance.id]"><i class="glyphicon glyphicon-ok"></i></g:link>
                                 </div>
                             </div>
                         </td>

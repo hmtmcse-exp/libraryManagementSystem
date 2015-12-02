@@ -106,4 +106,16 @@ class BookController {
         [bookInstanceList: bookList]
     }
 
+    def approveBorrowBookByID(){
+        Integer id = params.int("borrowID")?:0
+        def isGiven = bookService.approveBorrowBookByID(id)
+        if (isGiven){
+            flash.message = [info: "Given", success: true]
+            redirect(controller: "book", action: "index")
+        }else {
+            flash.message = [info: "Can't Able to Given", success: false]
+            redirect(controller: "book", action: "index")
+        }
+    }
+
 }
