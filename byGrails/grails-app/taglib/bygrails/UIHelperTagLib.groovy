@@ -17,6 +17,7 @@ class UIHelperTagLib {
 
         def isExist = session["member"]?:null
         if (isExist != null){
+            out << g.link(controller:"front", action:"books", class:"list-group-item"){g.message(code:"login", default:"My Books")}
             out << g.link(controller:"front", action:"logout", class:"list-group-item"){g.message(code:"login", default:"Logout")}
         }else{
             out << g.link(controller:"front", action:"registration", class:"list-group-item"){g.message(code:"registration", default:"Registration")}
