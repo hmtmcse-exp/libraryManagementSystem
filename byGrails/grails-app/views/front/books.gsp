@@ -41,7 +41,12 @@
                             <div class="btn-group" role="group" aria-label="First group">
                                 <g:link controller="front" action="show" class="btn  btn-info" params="${[bookID:bookInstance.id]}">Details</g:link>
                                 <g:if test="${bookInstance.isReturnRequest == false}">
-                                     <g:link controller="front" action="returnRequest" class="btn  btn-success" params="${[borrowID:bookInstance.id]}">Return Request</g:link>
+                                    <g:if test="${bookInstance.isPending == true}">
+                                        <g:link controller="front" action="deleteRequest" class="btn  btn-danger" params="${[borrowID:bookInstance.id]}">Delete Request</g:link>
+                                    </g:if>
+                                    <g:else>
+                                        <g:link controller="front" action="returnRequest" class="btn  btn-success" params="${[borrowID:bookInstance.id]}">Return Request</g:link>
+                                    </g:else>
                                 </g:if>
                             </div>
                         </td>

@@ -131,4 +131,22 @@ class FrontController {
             redirect(controller: "front", action: "index")
         }
     }
+
+    def deleteRequest(){
+        def isExist = session["member"]?:null
+        Integer borrowID = params.int("borrowID")?:0
+        if (isExist != null && borrowID != 0){
+            def isRequested = bookService.returnBorrowBookByID(borrowID)
+            if (isRequested == true){
+                flash.message = [info: "Deleted", success: true]
+                redirect(controller: "front", action: "books")
+            }else{
+                flash.message = [info: "Can't Send Delete Request", success: false]
+                redirect(controller: "front", action: "books")
+            }
+        }else{
+            flash.message = [info: "You have need to login or Register for send borrow request", success: true]
+            redirect(controller: "front", action: "index")
+        }
+    }
 }
