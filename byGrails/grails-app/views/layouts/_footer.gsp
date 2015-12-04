@@ -3,7 +3,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Grails Tutorial</p>
+                <p>Copyright &copy;Library Management</p>
             </div>
         </div>
     </footer>

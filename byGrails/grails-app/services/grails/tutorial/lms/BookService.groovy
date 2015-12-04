@@ -36,10 +36,52 @@ class BookService {
         return borrowBooks
     }
 
+    def getReturnBorrowBook(){
+        def borrowBooks = BorrowBook.createCriteria().list {
+            and {
+                eq("isReturnRequest",true)
+                eq("isReturn",false)
+                eq("isPending",false)
+            }
+
+        }
+        return borrowBooks
+    }
+
     def approveBorrowBookByID(Integer id = 0){
         if (id != 0){
             def borrowBook = BorrowBook.get(id)
             borrowBook.isPending = false
+            borrowBook.save(flush: true)
+            if (borrowBook.hasErrors()){
+                return false
+            }else{
+                return true
+            }
+        }else{
+            return false
+        }
+    }
+
+    def returnBorrowBookByID(Integer id = 0){
+        if (id != 0){
+            def borrowBook = BorrowBook.get(id)
+            borrowBook.isReturn = true
+            borrowBook.save(flush: true)
+            if (borrowBook.hasErrors()){
+                return false
+            }else{
+                return true
+            }
+        }else{
+            return false
+        }
+    }
+
+    def returnRequestBorrowBookByID(Integer id = 0){
+        if (id != 0){
+            def borrowBook = BorrowBook.get(id)
+            borrowBook.isReturn = true
             borrowBook.save(flush: true)
             if (borrowBook.hasErrors()){
                 return false

@@ -20,24 +20,31 @@
                 <tbody>
                 <g:each in="${bookInstanceList}" status="i" var="bookInstance">
                     <tr class="text-center">
-                        <td>${bookInstance?.name}</td>
-                        <td>${bookInstance?.isbn}</td>
-                        <td>${bookInstance?.edition}</td>
+                        <td>${bookInstance?.book?.name}</td>
+                        <td>${bookInstance?.book?.isbn}</td>
+                        <td>${bookInstance?.book?.edition}</td>
                         <td>
-                            %{--<g:if test="${bookInstance.isPending == true}">--}%
-                                %{--<a href="#" class="btn  btn-danger">Pending</a>--}%
-                            %{--</g:if>--}%
-                            %{--<g:else>--}%
-                                %{--<a href="#" class="btn  btn-success">Approved</a>--}%
-                            %{--</g:else>--}%
+                            <g:if test="${bookInstance.isReturnRequest == false}">
+                                <g:if test="${bookInstance.isPending == true}">
+                                    <a href="#" class="btn  btn-danger">Pending</a>
+                                </g:if>
+                                <g:else>
+                                    <a href="#" class="btn  btn-success">Approved</a>
+                                </g:else>
+                            </g:if>
+                            <g:else>
+                                <a href="#" class="btn  btn-default">Return Request Send</a>
+                            </g:else>
+
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="First group">
-                                <g:link controller="front" action="show" class="btn  btn-success" params="${[bookID:bookInstance.id]}">Detailst</g:link>
-                                %{--<g:link controller="front" action="borrowRequest" class="btn  btn-info" params="${[bookID:bookInstance.id]}">Borrow Request</g:link>--}%
+                                <g:link controller="front" action="show" class="btn  btn-info" params="${[bookID:bookInstance.id]}">Details</g:link>
+                                <g:if test="${bookInstance.isReturnRequest == false}">
+                                     <g:link controller="front" action="returnRequest" class="btn  btn-success" params="${[borrowID:bookInstance.id]}">Return Request</g:link>
+                                </g:if>
                             </div>
                         </td>
-
                     </tr>
                 </g:each>
                 </tbody>

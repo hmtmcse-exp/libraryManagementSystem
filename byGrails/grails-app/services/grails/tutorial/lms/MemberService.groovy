@@ -93,13 +93,15 @@ class MemberService {
         map.success = false
         if (memberID != null){
             Member member = Member.get(memberID)
-            def bookList = BorrowBook.findByMember(member);
-            map.success = true
-            if (bookList != null){
-                map.bookList = bookList.book
-            }else{
-                map.bookList = []
+            def bookList = BorrowBook.createCriteria().list {
+                and {
+                    eq("member",member)
+                    eq("isReturn",false)
+                }
+
             }
+            map.success = true
+            map.bookList = bookList
             return map
         }else{
             map.message = "Invalid Request"

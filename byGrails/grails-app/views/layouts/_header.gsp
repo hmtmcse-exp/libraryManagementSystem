@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Grails Tutorial</a>
+            <a class="navbar-brand" href="#">Library Management</a>
         </div>
     </div>
 </nav>

@@ -118,4 +118,23 @@ class BookController {
         }
     }
 
+    def returnRequest(){
+        def bookList = bookService.getReturnBorrowBook()
+        [bookInstanceList: bookList]
+    }
+
+    def returnBook(){
+        Integer id = params.int("borrowID")?:0
+        def isGiven = bookService.returnBorrowBookByID(id)
+        if (isGiven){
+            flash.message = [info: "Returned", success: true]
+            redirect(controller: "book", action: "returnRequest")
+        }else {
+            flash.message = [info: "Can't Able to Given", success: false]
+            redirect(controller: "book", action: "returnRequest")
+        }
+    }
+
+
+
 }

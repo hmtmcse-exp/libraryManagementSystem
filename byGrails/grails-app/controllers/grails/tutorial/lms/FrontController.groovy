@@ -109,7 +109,26 @@ class FrontController {
 
     def logout() {
         session.invalidate()
-        flash.message = [info: "Successfully Logout", success: false]
+        flash.message = [info: "Successfully Logout", success: true]
         redirect(controller: "front", action: "index")
+    }
+
+
+    def returnRequest(){
+        def isExist = session["member"]?:null
+        Integer borrowID = params.int("borrowID")?:0
+        if (isExist != null && borrowID != 0){
+            def isRequested = bookService.returnRequestBorrowBookByID(borrowID)
+            if (isRequested == true){
+                flash.message = [info: "Send Return Request", success: true]
+                redirect(controller: "front", action: "books")
+            }else{
+                flash.message = [info: "Can't Send Return Request", success: false]
+                redirect(controller: "front", action: "books")
+            }
+        }else{
+            flash.message = [info: "You have need to login or Register for send borrow request", success: true]
+            redirect(controller: "front", action: "index")
+        }
     }
 }

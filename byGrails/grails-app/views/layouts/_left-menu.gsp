@@ -7,5 +7,6 @@
     <g:link controller="operator" action="index" class="list-group-item" ><g:message code="member" default="Operator"/></g:link>
     <g:link controller="book" action="getPendingBorrowBook" class="list-group-item" ><g:message code="member" default="Approve Book"/></g:link>
     <g:link controller="member" action="pendingMemberList" class="list-group-item" ><g:message code="member" default="Approve Member"/></g:link>
+    <g:link controller="book" action="returnRequest" class="list-group-item" ><g:message code="member" default="Return Request"/></g:link>
     <g:link controller="authentication" action="logout" class="list-group-item" ><g:message code="logout" default="Logout"/></g:link>
 </div>
