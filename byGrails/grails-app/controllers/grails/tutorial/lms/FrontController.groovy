@@ -1,5 +1,7 @@
 package grails.tutorial.lms
 
+import grails.converters.JSON
+
 class FrontController {
 
     BookService bookService
@@ -67,7 +69,6 @@ class FrontController {
         def member = memberService.loginMe(params);
         if (member != null){
             if (member.isApprove == false){
-                session["member"] = member
                 flash.message = [info: "Member Not Approved Yet, Please Contact with librarian", success: true]
             }else{
                 session["member"] = member
@@ -149,4 +150,9 @@ class FrontController {
             redirect(controller: "front", action: "index")
         }
     }
+
+    def search(){
+        render(bookService.searchBook(params) as JSON)
+    }
+
 }

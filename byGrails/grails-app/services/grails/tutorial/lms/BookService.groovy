@@ -93,5 +93,19 @@ class BookService {
         }
     }
 
+    def searchBook(def params) {
+        def books = Book.createCriteria().list() {
+                like("name", "%" + params.term + "%")
+        };
+        def list = []
+        def map = [:]
+        books.each {book ->
+            map.put("label",book.name)
+            map.put("id",book.id)
+            list.add(map)
+        }
+        return list;
+    }
+
 
 }

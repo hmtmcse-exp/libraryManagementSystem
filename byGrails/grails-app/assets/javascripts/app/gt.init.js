@@ -11,6 +11,19 @@ jQuery(document).ready(function(){
         event.preventDefault();
     });
 
+    var object = jQuery(".auto-complete-input"),
+        url = GT.baseURL + object.attr("url");
+    object.autocomplete({
+        source: url,
+        minLength: 1,
+        select: function( event, ui ) {
+            var form = object.closest(".auto-submit-form")
+            if(form !== undefined){
+                form.find(".id-add-input").val(ui.item.id)
+            }
+        }
+    });
+
     var searchArea = jQuery("#search-area");
     searchArea.find(".selected-column-name li").click(function(){
         var _this = $(this);
