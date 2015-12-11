@@ -65,7 +65,25 @@ class MemberService {
         if (params != null && params.memberID && params.bookID){
             Book book = Book.get(params.bookID);
             Member member = Member.get(params.memberID)
-            if (book != null && member != null){
+
+            if (member != null){
+                def borrow = BorrowBook.createCriteria().list {
+                    and {
+                        eq("member",member)
+                        eq("isReturn",false)
+                    }
+                };
+                if (borrow.size() >= 3){
+                    map.message = "Borrow Maximum Limit Cross"
+                    return map
+                }
+            }else{
+                map.message = "Invalid Request"
+                return map
+            }
+
+
+            if (book != null){
                 BorrowBook borrowBook = new BorrowBook();
                 borrowBook.member = member;
                 borrowBook.book = book
