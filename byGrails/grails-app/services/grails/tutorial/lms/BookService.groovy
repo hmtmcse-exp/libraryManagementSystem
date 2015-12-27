@@ -51,6 +51,9 @@ class BookService {
     def approveBorrowBookByID(Integer id = 0){
         if (id != 0){
             def borrowBook = BorrowBook.get(id)
+            def book = borrowBook.book
+            book.borrow = book.borrow + 1;
+            book.save(flush: true);
             borrowBook.isPending = false
             borrowBook.save(flush: true)
             if (borrowBook.hasErrors()){
@@ -67,6 +70,9 @@ class BookService {
         if (id != 0){
             def borrowBook = BorrowBook.get(id)
             borrowBook.isReturn = true
+            def book = borrowBook.book
+            book.borrow = book.borrow - 1;
+            book.save(flush: true);
             borrowBook.save(flush: true)
             if (borrowBook.hasErrors()){
                 return false

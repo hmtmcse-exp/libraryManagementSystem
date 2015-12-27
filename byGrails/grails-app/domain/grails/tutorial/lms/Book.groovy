@@ -5,6 +5,7 @@ class Book {
     String name
     String isbn
     Integer copy
+    Integer borrow = 0
     Double price
     String code
     String edition

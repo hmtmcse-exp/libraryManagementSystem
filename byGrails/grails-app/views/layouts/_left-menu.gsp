@@ -1,4 +1,5 @@
 <div class="list-group">
+    <g:link controller="dashboard" action="index" class="list-group-item" ><g:message code="author" default="Report"/></g:link>
     <g:link controller="author" action="index" class="list-group-item" ><g:message code="author" default="Author"/></g:link>
     <g:link controller="category" action="index" class="list-group-item" ><g:message code="category" default="Category"/></g:link>
     <g:link controller="book" action="index" class="list-group-item" ><g:message code="book" default="Book"/></g:link>
